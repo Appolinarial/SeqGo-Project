@@ -1,10 +1,9 @@
 <script setup lang="ts">
-import Results from "@/pages/Results.vue"
+import AppLayout from "@/widgets/layout/AppLayout.vue";
 </script>
 
 <template>
-  <Results />
+<AppLayout />
 </template>
 
-<style scoped>
-</style>
+<style scoped></style>
