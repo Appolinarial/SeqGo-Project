@@ -48,6 +48,19 @@ const filteredVariants = computed(() => { //создаем перевычисл�
   });
 });
 
+// Перекрашиваем значения значимости
+const getSignificanceClass = (significance: string) => {
+  switch (significance) {
+    case 'PATHOGENIC':
+      return 'text-red';
+    case 'BENIGN':
+      return 'text-green';
+    default:
+      return '';
+  }
+};
+
+
 // Прогрузка первых 10 строк вариантов
 const loadInitialVariants = () => {
   displayedVariants.value = filteredVariants.value.slice(0, 10);
@@ -121,7 +134,8 @@ loadInitialVariants();
       <table>
         <thead>
           <tr>
-            <th>Name variant</th>
+            <th class="narrow-column">№</th>
+            <th>Variant name</th>
             <th>Genotype</th>
             <th>Significance</th>
             <th>HGVS</th>
@@ -129,10 +143,11 @@ loadInitialVariants();
           </tr>
         </thead>
         <tbody>
-          <tr v-for="variant in displayedVariants" :key="variant.alleleName">
+          <tr v-for="(variant, index) in displayedVariants" :key="variant.alleleName">
+            <td>{{ index + 1 }}</td>
             <td>{{ variant.alleleName }}</td>
             <td>{{ variant.genotype }}</td>
-            <td>{{ variant.significance }}</td>
+            <td :class="getSignificanceClass(variant.significance)">{{ variant.significance }}</td>
             <td>
               <span v-for="(hgvsValue, hgvsKey) in variant.hgvs" :key="hgvsKey">
                 {{ hgvsKey }}: {{ hgvsValue }}<br />
@@ -140,13 +155,14 @@ loadInitialVariants();
             </td>
             <td>
               <span v-for="source in variant.externalSourceEntries" :key="source.maybeAnnotationSourceGeneticVariantIdentifier">
-                <a :href="source.maybeAnnotationSourceGeneticVariantUrl" target="_blank">{{ source.annotationSourceName }}</a><br />
+                <a :href="source.maybeAnnotationSourceGeneticVariantUrl" target="_blank">{{ source.annotationSourceName }}</a>
+                <br />
               </span>
             </td>
           </tr>
         </tbody>
       </table>
-    <AppButton v-if="showAllVariants" @click="showAll" text="Показать все" class="btn"/>
+    <AppButton v-if="showAllVariants" @click="showAll" text="Show all" class="btn"/>
     </div>
   </div>
 </template>
@@ -201,6 +217,7 @@ input::placeholder {
 select {
   background-color: #fff;
   cursor: pointer;
+  width: 148px;
 }
 
 select option {
@@ -223,6 +240,13 @@ table {
   table-layout: fixed;
 }
 
+thead th{
+  font-size: 16px;
+  font-weight:600;
+  -webkit-text-stroke: 0.5px #b4e6f5;
+  color: #064d57;
+}
+
 th, td {
   padding: 8px;
   word-wrap: break-word;
@@ -236,6 +260,11 @@ th {
   text-align: start;
   font-size: 13px;
 }
+
+.narrow-column {
+  width: 30px;
+}
+
 
 td {
   padding: 5px;
@@ -251,6 +280,25 @@ tbody tr:hover {
   background-color: #eaf2f1;
 }
 
+.text-red {
+  color: rgb(174, 16, 43);
+  text-shadow: 
+     2px  2px 5px #e8a9c3,
+     2px -2px 5px #e8a9c3,
+    -2px  2px 5px #e8a9c3,
+    -2px -2px 5px #e8a9c3;
+}
+
+.text-green {
+  color: rgb(39, 180, 91);
+  text-shadow: 
+     2px  2px 5px #8befda,
+     2px -2px 5px #8befda,
+    -2px  2px 5px #8befda,
+    -2px -2px 5px #8befda;
+}
+
+
 .btn {
   background-color: #096b78;
   color: #fff;
@@ -259,6 +307,7 @@ tbody tr:hover {
   border-radius: 4px;
   cursor: pointer;
   border: none;
+  padding:5px 15px 5px 15px;
 }
 .btn:hover {
   background-color: #0aa0b3;
