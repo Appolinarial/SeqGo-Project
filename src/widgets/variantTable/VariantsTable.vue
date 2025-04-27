@@ -95,8 +95,8 @@ loadInitialVariants();
 
 <template>
   <div>
-    <h2>Filter genetic variants <img src="@/app/icons/dna.svg"></h2>
-    
+    <h2>Genetic variants <img src="@/app/icons/dna.svg"></h2>
+    <h3>Filter</h3>
     <div class="filter-container">
       <div class="filter-element">
         <label for="variantName">By variant name:</label>
@@ -175,14 +175,22 @@ h2 {
   font-weight: 300;
   color: rgb(5, 76, 85);
 }
+
+h3 {
+  padding: 15px 0 0 20px;
+  margin: 0px;
+  color: rgb(5, 85, 85);
+}
+
 .filter-container {
   display: flex;
   flex-direction: column;
   width: max-content;
   justify-content: space-between;
   gap: 10px;
-  padding: 20px;
-  border-radius: 8px;
+  padding: 15px 0 20px 20px;
+  margin-left: 15px;
+  border-top: 1px solid #064d57;
 }
 
 .filter-element {
@@ -262,7 +270,7 @@ th {
 }
 
 .narrow-column {
-  width: 30px;
+  width: 33px;
 }
 
 
@@ -315,11 +323,11 @@ tbody tr:hover {
 	box-shadow: 0 7px 14px rgb(65 132 144 / 10%), 0 3px 6px rgb(0 0 0 / 8%)
 }
 .scroll-tobottom {
-  top: 43% !important;
+  top: 48% !important;
 }
 .scroll-button {
   position: fixed;
-  top: 35%;
+  top: 40%;
   left: 20px;
   width: 40px;
   height: 40px;

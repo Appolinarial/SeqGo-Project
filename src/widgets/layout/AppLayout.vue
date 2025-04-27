@@ -27,6 +27,7 @@ dropdownOpen.value = !dropdownOpen.value;
         <img src="@/app/icons/vertical-line.png">
         <div class="dropdown-container">
           <div @click="toggleDropdown" class="dropdown-text">
+          <img src="@/app/icons/user.svg" alt="user">
           <p>brother</p>
           <img src="@/app/icons/expand_icon.svg" alt="expand">
           </div>
