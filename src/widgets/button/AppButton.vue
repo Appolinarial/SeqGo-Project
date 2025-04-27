@@ -8,7 +8,7 @@ const props = defineProps({
 </script>
 
 <template>
-    <button>{{ text }}</button>
+    <button><slot></slot>{{ text }}</button>
 </template>
 
 <style scoped>

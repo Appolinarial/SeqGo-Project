@@ -5,14 +5,20 @@ body {
     font-family: "Roboto", "Arial", sans-serif;
     font-size: 12px;
     line-height: 1.4;
+    background-color: #efefef;
 }
 body:hover {
   text-decoration: none;
 }
 
 a {
-    color: inherit;
-    text-decoration: none;
+  color: inherit;
+  text-decoration: none;
+}
+
+a:hover {
+  font-weight: bolder;
+  color:#096b78;
 }
 
 
