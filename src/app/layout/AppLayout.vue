@@ -1,7 +1,7 @@
 <script setup lang="ts">
 import { ref } from 'vue';
-import VariantsTable from '../variantTable/VariantsTable.vue';
-import AppButton from '../button/AppButton.vue';
+import VariantsTable from '@/features/variantTable/VariantsTable.vue';
+import AppButton from '@/shared/button/AppButton.vue';
   
 const dropdownOpen = ref(false);
 const currentYear = new Date().getFullYear();
@@ -22,14 +22,14 @@ dropdownOpen.value = !dropdownOpen.value;
           <a>Hotspots</a>
         </nav>
         <div class="btn-container">
-            <AppButton class="upload-btn" text="UPLOAD DATA"><img src="@/app/icons/download_icon.svg" alt="download" ></AppButton>
+            <AppButton class="upload-btn" text="UPLOAD DATA"><img src="@/shared/assets/icons/download_icon.svg" alt="download" ></AppButton>
         </div>
-        <img src="@/app/icons/vertical-line.png">
+        <img src="@/shared/assets/icons/vertical-line.png">
         <div class="dropdown-container">
           <div @click="toggleDropdown" class="dropdown-text">
-          <img src="@/app/icons/user.svg" alt="user">
+          <img src="@/shared/assets/icons/user.svg" alt="user">
           <p>brother</p>
-          <img src="@/app/icons/expand_icon.svg" alt="expand">
+          <img src="@/shared/assets/icons/expand_icon.svg" alt="expand">
           </div>
           <div v-if="dropdownOpen" class="dropdown-menu">
             <a href="#">Account</a>
